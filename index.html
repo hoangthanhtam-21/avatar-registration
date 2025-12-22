@@ -128,7 +128,7 @@
                     <div>
                         <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1">Location:</p>
                         <p class="font-medium text-slate-200 leading-snug">
-                            Lotte Cinema, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, Cau Ong Lanh Ward.
+                            Lotte Cinema Nowzone, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, District 1.
                         </p>
                     </div>
                     <div>
@@ -221,15 +221,14 @@
     <script>
         const GAS_URL = 'https://script.google.com/macros/s/AKfycbyC9wI3SO8q15gPVZD6pKiwHDjDo1AswQKIX3K-6ktT7ISoJpqqhY4a8VnUq4e2NONm/exec'; 
         
-        // ĐÃ CẬP NHẬT: Mở lúc 11:30 ngày 24/12/2025
         const OPEN_DATE = new Date('2025-12-24T11:30:00');
         const CLOSE_DATE = new Date('2025-12-28T11:30:00');
         
-        // CẬP NHẬT: Capacity [110, 110, 80, 80] cho cả 3 Sessions
+        // CẬP NHẬT: Screen 4 = 90 vé cho cả 3 Suất
         const SESSIONS = [
-            { id: 1, label: 'Session 1: 09:00-12:30, Jan 10, 2026', screens: [110, 110, 80, 80] },
-            { id: 2, label: 'Session 2: 14:00-17:30, Jan 10, 2026', screens: [110, 110, 80, 80] },
-            { id: 3, label: 'Session 3: 09:00-12:30, Jan 11, 2026', screens: [110, 110, 80, 80] }
+            { id: 1, label: 'Session 1: 09:00-12:30, Jan 10, 2026', screens: [110, 110, 80, 90] },
+            { id: 2, label: 'Session 2: 14:00-17:30, Jan 10, 2026', screens: [110, 110, 80, 90] },
+            { id: 3, label: 'Session 3: 09:00-12:30, Jan 11, 2026', screens: [110, 110, 80, 90] }
         ];
 
         const form = document.getElementById('avatar-form');
@@ -388,4 +387,3 @@
     </script>
 </body>
 </html>
-
