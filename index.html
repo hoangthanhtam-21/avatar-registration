@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avatar 3 Fire and Ash | Registration</title>
+    <title>Avatar: Fire and Ash | Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&family=Inter:wght@400;600;800&display=swap');
@@ -104,10 +104,6 @@
             cursor: not-allowed;
             box-shadow: none;
         }
-
-        .session-font {
-            font-family: 'Inter', sans-serif;
-        }
     </style>
 </head>
 <body>
@@ -117,7 +113,7 @@
     <div class="glass-container">
         <div id="registration-content">
             <h1 class="text-3xl font-black text-center title-glow leading-none mb-2 uppercase tracking-tighter">
-                AVATAR 3<br>FIRE AND ASH
+                AVATAR<br>FIRE AND ASH
             </h1>
             <p class="text-center text-xs text-orange-200 italic mb-6">Enter the world of Pandora's people.</p>
 
@@ -126,36 +122,36 @@
                 <h3 class="font-black text-orange-400 mb-3 border-b border-orange-400/20 pb-1 uppercase tracking-wider text-center">Event Information</h3>
                 <div class="space-y-3">
                     <div>
-                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1">Location:</p>
-                        <p class="font-medium text-slate-200 leading-snug">
-                            Lotte Cinema, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, Cau Ong Lanh Wd.
+                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1 text-left">Location:</p>
+                        <p class="font-medium text-slate-200 leading-snug text-left">
+                            Lotte Cinema Nowzone, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, Cau Ong Lanh Wd.
                         </p>
                     </div>
                     <div>
-                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1">Organizer:</p>
-                        <p class="font-medium text-slate-200">English Department - Nguyen Khuyen High school</p>
+                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1 text-left">Organizer:</p>
+                        <p class="font-medium text-slate-200 text-left">English Department - Nguyen Khuyen High School</p>
                     </div>
-                    <p class="flex items-baseline space-x-2">
-                        <span class="text-slate-400 font-bold uppercase text-[10px]">Ticket Price:</span> 
-                        <span class="text-orange-400 font-black text-lg">60,000 VND</span>
-                    </p>
+                    <div>
+                        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1 text-left">Ticket Price:</p>
+                        <p class="text-orange-400 font-black text-lg text-left">60,000 VND</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Notes -->
+            <!-- Notes Section -->
             <div class="countdown-box p-5 mb-6 shadow-inner">
-                <h4 class="font-black text-orange-300 mb-3 uppercase text-sm text-center border-b border-orange-300/20 pb-1">Notes</h4>
-                <ul class="space-y-2 text-slate-200 text-sm font-medium">
-                    <li class="flex items-start"><span class="text-orange-500 mr-2">✦</span> Exclusive for NK students. One ticket per student.</li>
-                    <li class="flex items-start"><span class="text-orange-500 mr-2">✦</span> <strong>No assigned seating at the theaters. Arrive early to get the best seat.</strong></li>
-                    <li class="flex items-start"><span class="text-orange-500 mr-2">✦</span> Form closes at 11:30 AM - Dec 28, 2025.</li>
-                </ul>
+                <h4 class="font-black text-orange-300 mb-3 uppercase text-sm border-b border-orange-300/20 pb-1 text-center">Essential Notes</h4>
+                <div class="space-y-2 text-slate-200 text-sm font-medium text-left">
+                    <p>✦ Exclusive for NK students. One ticket per student.</p>
+                    <p>✦ <strong>No assigned seating. Arrive early for best choice.</strong></p>
+                    <p>✦ Form closes at 11:30 AM - Dec 28, 2025.</p>
+                </div>
             </div>
 
             <!-- Timer Section -->
             <div class="text-center mb-8 bg-black/30 py-4 rounded-lg border border-white/5">
-                <p id="form-status-text" class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Checking Status...</p>
-                <div id="countdown-timer" class="text-xl font-mono text-orange-400 font-black tracking-widest">00d:00h:00m:00s</div>
+                <p id="form-status-text" class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Connecting to Server...</p>
+                <div id="countdown-timer" class="text-xl font-mono text-orange-400 font-black tracking-widest">--d:--h:--m:--s</div>
             </div>
 
             <!-- Form -->
@@ -163,21 +159,19 @@
                 <div>
                     <label class="block text-[10px] font-black text-orange-400 uppercase mb-1 ml-1 tracking-widest">Full Name</label>
                     <input type="text" id="full-name" name="fullName" required placeholder="NGUYEN VAN A"
-                           class="w-full bg-slate-800/80 border border-slate-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all placeholder:text-slate-500 uppercase">
+                           class="w-full bg-slate-800/80 border border-slate-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all uppercase">
                 </div>
 
                 <div>
                     <label class="block text-[10px] font-black text-orange-400 uppercase mb-1 ml-1 tracking-widest">Class</label>
                     <input type="text" id="class-name" name="class" required placeholder="10A1"
-                           class="w-full bg-slate-800/80 border border-slate-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all placeholder:text-slate-500 uppercase">
+                           class="w-full bg-slate-800/80 border border-slate-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all uppercase">
                 </div>
 
                 <div class="pt-2">
-                    <label class="block text-base font-black text-orange-300 uppercase mb-4 text-center session-font tracking-tight">Select Show Session</label>
+                    <label class="block text-base font-black text-orange-300 uppercase mb-4 text-center tracking-tight">Select Show Session</label>
                     <div id="session-container" class="space-y-6">
-                        <div class="text-center py-6 text-slate-500 text-xs italic animate-pulse">
-                            Connecting to the Great Mother Eywa...
-                        </div>
+                        <!-- Content injected by JS -->
                     </div>
                 </div>
 
@@ -186,49 +180,51 @@
                     Confirm Registration
                 </button>
                 
-                <div id="spinner" class="hidden text-center">
+                <div id="spinner" class="hidden text-center mt-4">
                     <div class="inline-block animate-spin rounded-full h-6 w-6 border-2 border-orange-500 border-t-transparent"></div>
-                    <p class="text-[10px] mt-2 italic text-slate-400 uppercase tracking-widest">Processing Registration...</p>
+                    <p class="text-[10px] mt-2 italic text-slate-400 uppercase tracking-widest">Updating the Great Mother...</p>
                 </div>
             </form>
         </div>
 
         <!-- Success Screen -->
-        <div id="success-screen" class="hidden text-center py-4 animate-in fade-in duration-700">
+        <div id="success-screen" class="hidden text-center py-4">
             <div class="relative mb-6">
                 <img src="https://cdn.kinocheck.com/i/khxwb6pkp9.jpg" alt="Avatar Success" class="w-full rounded-2xl shadow-2xl border border-orange-500/50">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent rounded-2xl"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent rounded-2xl"></div>
             </div>
             
-            <h2 class="text-3xl font-black text-orange-400 mb-2 uppercase italic tracking-tighter">REGISTRATION SUCCESSFUL!</h2>
-            <p class="text-slate-400 text-xs mb-6 uppercase tracking-widest">You have joined the Na'vi people's journey</p>
+            <h2 class="text-2xl font-black text-orange-400 mb-4 uppercase italic leading-tight px-2">
+                You're halfway there.<br>
+                <span class="text-base text-white">Please wait for the official list from the English Department.</span>
+            </h2>
             
             <div class="space-y-2 mb-8 text-center bg-slate-900/80 p-5 rounded-2xl border border-orange-500/20 shadow-xl">
                 <p class="text-2xl text-white font-black uppercase" id="res-name"></p>
-                <div class="h-px bg-white/10 w-1/2 mx-auto my-2"></div>
                 <p class="text-lg text-orange-400 font-bold">Class: <span id="res-class"></span></p>
-                <p class="text-sm text-slate-300 mt-3 italic" id="res-session"></p>
+                <div class="h-px bg-white/10 w-1/2 mx-auto my-3"></div>
+                <p class="text-sm text-slate-300 italic" id="res-session"></p>
                 <p class="text-lg text-white font-black uppercase tracking-widest mt-1" id="res-screen"></p>
             </div>
-
-            <div class="p-4 bg-orange-500/10 rounded-xl border border-orange-500/30 text-xs leading-relaxed">
-                <p class="text-slate-200">Please prepare <span class="text-orange-400 font-bold">60,000 VND</span> for the ticket.</p>
-                <p class="text-slate-400 mt-2 italic text-[10px]">No assigned seating. Please capture this screen.</p>
+            
+            <div class="p-4 bg-orange-500/10 rounded-xl border border-orange-500/30">
+                <p class="text-orange-500 font-bold text-sm">Please prepare 60,000 VND.</p>
+                <p class="text-white-300 text-[12px] mt-1 uppercase">See you at Pandora!</p>
             </div>
         </div>
     </div>
 
     <script>
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbyC9wI3SO8q15gPVZD6pKiwHDjDo1AswQKIX3K-6ktT7ISoJpqqhY4a8VnUq4e2NONm/exec'; 
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbyEapGJHFKMbjP84dRb6fpslMeMqDggkJVsjygPrN6qCDafqQXwxEEx8Dh-qPT8KqeS/exec'; 
         
-        const OPEN_DATE = new Date('2025-12-24T11:30:00');
+        const OPEN_DATE = new Date('2025-12-27T10:00:00');
         const CLOSE_DATE = new Date('2025-12-28T11:30:00');
         
-        // CẬP NHẬT: Screen 4 = 90 vé cho cả 3 Suất
         const SESSIONS = [
             { id: 1, label: 'Session 1: 09:00-12:30, Jan 10, 2026', screens: [110, 110, 80, 90] },
             { id: 2, label: 'Session 2: 14:00-17:30, Jan 10, 2026', screens: [110, 110, 80, 90] },
-            { id: 3, label: 'Session 3: 09:00-12:30, Jan 11, 2026', screens: [110, 110, 80, 90] }
+            { id: 3, label: 'Session 3: 09:00-12:30, Jan 11, 2026', screens: [110, 110, 80, 90] },
+            { id: 4, label: 'Session 4: 14:00-17:30, Jan 11, 2026', screens: [110, 110, 80, 80] }
         ];
 
         const form = document.getElementById('avatar-form');
@@ -239,6 +235,7 @@
         const messageBox = document.getElementById('message-box');
 
         let serverData = null;
+        let serverTimeOffset = 0;
 
         function showMessage(msg, type = 'error') {
             messageBox.textContent = msg;
@@ -246,24 +243,25 @@
             setTimeout(() => messageBox.classList.remove('show'), 4000);
         }
 
+        function getCorrectedNow() {
+            return new Date(Date.now() + serverTimeOffset);
+        }
+
         function updateTimers() {
-            const now = new Date();
+            const now = getCorrectedNow();
             let target = null;
             let status = "";
 
             if (now < OPEN_DATE) {
                 target = OPEN_DATE;
                 status = "Registration opens in:";
-                statusText.className = "text-[10px] font-bold text-amber-500 mb-1 uppercase tracking-widest";
                 submitBtn.disabled = true;
             } else if (now < CLOSE_DATE) {
                 target = CLOSE_DATE;
                 status = "Form Closes In:";
-                statusText.className = "text-[10px] font-bold text-emerald-500 mb-1 uppercase tracking-widest";
                 if(serverData) submitBtn.disabled = false;
             } else {
                 status = "Registration Closed";
-                statusText.className = "text-[10px] font-bold text-red-500 mb-1 uppercase tracking-widest";
                 countdownEl.textContent = "CLOSED";
                 submitBtn.disabled = true;
                 statusText.textContent = status;
@@ -285,15 +283,15 @@
             try {
                 const res = await fetch(`${GAS_URL}?action=getStats`);
                 const data = await res.json();
+                
                 if (data.status === 'success') {
+                    if (data.serverTime) serverTimeOffset = data.serverTime - Date.now();
                     serverData = data.stats;
                     renderSessions(serverData);
-                    const now = new Date();
-                    if (now >= OPEN_DATE && now < CLOSE_DATE) submitBtn.disabled = false;
                 }
             } catch (e) {
-                console.error("Connection Error:", e);
                 renderSessions({});
+                console.error("Fetch Error");
             }
         }
 
@@ -302,7 +300,7 @@
             SESSIONS.forEach(session => {
                 const group = document.createElement('div');
                 group.className = "space-y-3";
-                group.innerHTML = `<h4 class="text-orange-400 font-black text-sm mb-3 border-l-4 border-orange-500 pl-3 uppercase tracking-tighter session-font">${session.label}</h4>`;
+                group.innerHTML = `<h4 class="text-orange-400 font-black text-sm mb-3 border-l-4 border-orange-500 pl-3 uppercase text-left">${session.label}</h4>`;
                 
                 const grid = document.createElement('div');
                 grid.className = "grid grid-cols-2 gap-3";
@@ -311,6 +309,7 @@
                     const screenNum = idx + 1;
                     const key = `S${session.id}_R${screenNum}`;
                     const registered = data ? (data[key] || 0) : 0;
+                    
                     const remaining = Math.max(0, capacity - registered);
                     const isSoldOut = remaining <= 0;
 
@@ -322,7 +321,7 @@
                                data-screen="Screen ${screenNum}"
                                required 
                                class="hidden" ${isSoldOut ? 'disabled' : ''}>
-                        <div class="text-xs uppercase font-black text-slate-300 mb-1 session-font">Screen ${screenNum}</div>
+                        <div class="text-xs uppercase font-black text-slate-300 mb-1">Screen ${screenNum}</div>
                         <div class="text-sm font-mono font-bold ${isSoldOut ? 'text-red-500' : 'text-orange-400'}">
                             ${isSoldOut ? 'SOLD OUT' : remaining + ' left'}
                         </div>
@@ -337,15 +336,15 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const selectedRadio = document.querySelector('input[name="sessionScreen"]:checked');
-            if (!selectedRadio) {
-                showMessage("Please select a movie screen.");
-                return;
-            }
+            if (!selectedRadio) { showMessage("Select a screen."); return; }
 
-            const sessionLabel = selectedRadio.dataset.sessionLabel;
-            const screenLabel = selectedRadio.dataset.screen;
-            const formData = new FormData(form);
-            const payload = Object.fromEntries(formData);
+            const payload = {
+                fullName: document.getElementById('full-name').value,
+                class: document.getElementById('class-name').value,
+                sessionScreen: selectedRadio.value,
+                sessionFull: selectedRadio.dataset.sessionLabel,
+                screenFull: selectedRadio.dataset.screen
+            };
             
             submitBtn.disabled = true;
             document.getElementById('spinner').classList.remove('hidden');
@@ -353,28 +352,24 @@
             try {
                 const res = await fetch(GAS_URL, {
                     method: 'POST',
-                    body: JSON.stringify({ 
-                        ...payload, 
-                        action: 'register', 
-                        sessionFull: sessionLabel, 
-                        screenFull: screenLabel 
-                    })
+                    body: JSON.stringify(payload)
                 });
                 const result = await res.json();
+                
                 if (result.status === 'success') {
                     document.getElementById('registration-content').classList.add('hidden');
                     document.getElementById('success-screen').classList.remove('hidden');
                     document.getElementById('res-name').textContent = payload.fullName.toUpperCase();
                     document.getElementById('res-class').textContent = payload.class.toUpperCase();
-                    document.getElementById('res-session').textContent = sessionLabel;
-                    document.getElementById('res-screen').textContent = screenLabel;
+                    document.getElementById('res-session').textContent = payload.sessionFull;
+                    document.getElementById('res-screen').textContent = payload.screenFull;
                     window.scrollTo(0, 0);
                 } else {
-                    showMessage(result.message || "Registration failed. Please try again.");
+                    showMessage(result.message);
                     submitBtn.disabled = false;
                 }
             } catch (err) {
-                showMessage("Server connection failed. Please check your internet.");
+                showMessage("Registration sent. Please check official list.");
                 submitBtn.disabled = false;
             } finally {
                 document.getElementById('spinner').classList.add('hidden');
@@ -387,7 +382,3 @@
     </script>
 </body>
 </html>
-
-
-
-
