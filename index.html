@@ -124,7 +124,7 @@
                     <div>
                         <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1 text-left">Location:</p>
                         <p class="font-medium text-slate-200 leading-snug text-left">
-                            Lotte Cinema, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, Cau Ong Lanh Wd.
+                            Lotte Cinema Nowzone, 5th Floor, Nowzone Mall, 235 Nguyen Van Cu St, Cau Ong Lanh Wd.
                         </p>
                     </div>
                     <div>
@@ -144,7 +144,7 @@
                 <div class="space-y-2 text-slate-200 text-sm font-medium text-left">
                     <p>✦ Exclusive for NK students. One ticket per student.</p>
                     <p>✦ <strong>No assigned seating. Arrive early for best choice.</strong></p>
-                    <p>✦ Form closes at 11:30 AM - Dec 30, 2025.</p>
+                    <p>✦ Form closes at 12:30 PM - Dec 30, 2025.</p>
                 </div>
             </div>
 
@@ -209,16 +209,16 @@
             
             <div class="p-4 bg-orange-500/10 rounded-xl border border-orange-500/30">
                 <p class="text-orange-500 font-bold text-sm">Please prepare 60,000 VND.</p>
-                <p class="text-white-300 text-[12px] mt-1 uppercase">See you at Pandora!</p>
+                <p class="text-slate-300 text-[10px] mt-1 uppercase italic tracking-widest">See you at Pandora!</p>
             </div>
         </div>
     </div>
 
     <script>
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbyEapGJHFKMbjP84dRb6fpslMeMqDggkJVsjygPrN6qCDafqQXwxEEx8Dh-qPT8KqeS/exec'; 
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbz3aH6ZQKVn7kX6QaWdcZOE_jc_QZqJy-cNGCvcm0T0nIRSB4sZNHhw_1VKYDyL6Uhc/exec'; 
         
-        const OPEN_DATE = new Date('2025-12-27T10:00:00');
-        const CLOSE_DATE = new Date('2025-12-30T11:30:00');
+        const OPEN_DATE = new Date('2025-12-26T10:00:00');
+        const CLOSE_DATE = new Date('2025-12-30T12:30:00'); // Mở rộng hẳn thời gian để không bị khóa form nhầm
         
         const SESSIONS = [
             { id: 1, label: 'Session 1: 09:00-12:30, Jan 10, 2026', screens: [110, 110, 80, 90] },
@@ -240,7 +240,7 @@
         function showMessage(msg, type = 'error') {
             messageBox.textContent = msg;
             messageBox.className = `message-box show ${type}`;
-            setTimeout(() => messageBox.classList.remove('show'), 4000);
+            setTimeout(() => messageBox.classList.remove('show'), 5000);
         }
 
         function getCorrectedNow() {
@@ -259,6 +259,7 @@
             } else if (now < CLOSE_DATE) {
                 target = CLOSE_DATE;
                 status = "Form Closes In:";
+                // Nút chỉ mở khi serverData đã tải xong
                 if(serverData) submitBtn.disabled = false;
             } else {
                 status = "Registration Closed";
@@ -281,13 +282,16 @@
 
         async function fetchData() {
             try {
-                const res = await fetch(`${GAS_URL}?action=getStats`);
+                // Thêm timestamp để tránh cache trình duyệt
+                const res = await fetch(`${GAS_URL}?action=getStats&t=${Date.now()}`);
                 const data = await res.json();
                 
                 if (data.status === 'success') {
                     if (data.serverTime) serverTimeOffset = data.serverTime - Date.now();
                     serverData = data.stats;
                     renderSessions(serverData);
+                    // Sau khi có data, cập nhật trạng thái nút submit ngay
+                    updateTimers();
                 }
             } catch (e) {
                 renderSessions({});
@@ -308,13 +312,16 @@
                 session.screens.forEach((capacity, idx) => {
                     const screenNum = idx + 1;
                     const key = `S${session.id}_R${screenNum}`;
-                    const registered = data ? (data[key] || 0) : 0;
+                    const registered = (data && data[key]) ? parseInt(data[key]) : 0;
                     
                     const remaining = Math.max(0, capacity - registered);
+                    // Chỉ coi là Sold Out nếu còn thực sự <= 0 vé
                     const isSoldOut = remaining <= 0;
 
                     const label = document.createElement('label');
                     label.className = `radio-card flex flex-col justify-center items-center p-4 rounded-xl cursor-pointer ${isSoldOut ? 'sold-out' : ''}`;
+                    
+                    // Logic: disabled input radio nếu hết vé
                     label.innerHTML = `
                         <input type="radio" name="sessionScreen" value="${key}" 
                                data-session-label="${session.label}" 
@@ -336,25 +343,48 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const selectedRadio = document.querySelector('input[name="sessionScreen"]:checked');
-            if (!selectedRadio) { showMessage("Select a screen."); return; }
+            
+            // Bảo vệ thêm: kiểm tra xem option đó có bị disabled không (tránh hack HTML)
+            if (!selectedRadio || selectedRadio.disabled) { 
+                showMessage("This screen is no longer available."); 
+                return; 
+            }
 
             const payload = {
-                fullName: document.getElementById('full-name').value,
-                class: document.getElementById('class-name').value,
+                fullName: document.getElementById('full-name').value.trim(),
+                class: document.getElementById('class-name').value.trim(),
                 sessionScreen: selectedRadio.value,
                 sessionFull: selectedRadio.dataset.sessionLabel,
                 screenFull: selectedRadio.dataset.screen
             };
             
+            if (!payload.fullName || !payload.class) {
+                showMessage("Please fill in your name and class.");
+                return;
+            }
+
             submitBtn.disabled = true;
             document.getElementById('spinner').classList.remove('hidden');
 
             try {
-                const res = await fetch(GAS_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                });
-                const result = await res.json();
+                // Sử dụng exponential backoff đơn giản cho fetch
+                let response;
+                let retries = 0;
+                while (retries < 3) {
+                    try {
+                        response = await fetch(GAS_URL, {
+                            method: 'POST',
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (e) {
+                        retries++;
+                        if (retries === 3) throw e;
+                        await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retries)));
+                    }
+                }
+
+                const result = await response.json();
                 
                 if (result.status === 'success') {
                     document.getElementById('registration-content').classList.add('hidden');
@@ -365,23 +395,25 @@
                     document.getElementById('res-screen').textContent = payload.screenFull;
                     window.scrollTo(0, 0);
                 } else {
-                    showMessage(result.message);
+                    // Nếu server báo Sold Out thật sự
+                    showMessage(result.message || "Sold out. Please refresh and try another screen.");
+                    fetchData(); // Tải lại data mới nhất
                     submitBtn.disabled = false;
                 }
             } catch (err) {
-                showMessage("Registration sent. Please check official list.");
+                showMessage("Network error. Your registration might have been sent. Please contact the English Dept if you don't see your name on the list later.");
                 submitBtn.disabled = false;
             } finally {
                 document.getElementById('spinner').classList.add('hidden');
             }
         });
 
-        updateTimers();
-        setInterval(updateTimers, 1000);
+        // Tải dữ liệu ban đầu
         fetchData();
+        // Chạy timer
+        setInterval(updateTimers, 1000);
+        // Tự động làm mới dữ liệu mỗi 30 giây để tránh tình trạng "vé ảo"
+        setInterval(fetchData, 30000);
     </script>
 </body>
 </html>
-
-
-
